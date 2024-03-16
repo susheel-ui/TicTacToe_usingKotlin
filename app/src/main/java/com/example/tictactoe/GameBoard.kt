@@ -16,6 +16,8 @@ private val playerx = "playerX"
 private val playero = "playerO"
 private var XorY = true
 private var GameboardStates = arrayOf("2","2","2","2","2","2","2","2","2")
+private var playersCount_X = 0
+private var playersCount_O = 0
 class GameBoard : AppCompatActivity(),View.OnClickListener {
     private lateinit var bindingGameboard:ActivityGameBoardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,7 +114,7 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
             if(XorY==true){
                         btn.setBackgroundResource(R.drawable.bkg_o)
                         btn.text = "O"
-                addFilledPositions(position,"O")
+                        addFilledPositions(position,"O")
                         XorY= false
 
             }else{
@@ -129,9 +131,9 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
     }
     private fun addFilledPositions(place:Int,str:String){
         GameboardStates[place] = str
-        checkGame()
+        checkGame(str)
     }
-    private fun checkGame(){
+    private fun checkGame(str:String){
         //for testing purpose
         Log.d(TAG, "checkGame:------------------------new states ")
        for (i in 0..8){
@@ -139,7 +141,91 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
        }
 
         // check loggic to who is winner
+//check horizontal element
+        if(GameboardStates.get(0).equals(GameboardStates.get(1))&& GameboardStates.get(1).equals(
+                GameboardStates.get(2))&& !GameboardStates.get(0).equals("2")){
+            Toast.makeText(applicationContext, "Winner->"+str, Toast.LENGTH_SHORT).show()
+            winnerAnnounced(str.uppercase());
+        }
+        else if (GameboardStates.get(3).equals(GameboardStates.get(4))&& GameboardStates.get(4).equals(
+                GameboardStates.get(5))&& !GameboardStates.get(3).equals("2")){
+            Toast.makeText(applicationContext, "Winner->"+str, Toast.LENGTH_SHORT).show()
+            winnerAnnounced(str.uppercase());
+        }
+        else if (  GameboardStates.get(6).equals(GameboardStates.get(7))&& GameboardStates.get(7).equals(
+                GameboardStates.get(8))&& !GameboardStates.get(6).equals("2")){
+            Toast.makeText(applicationContext, "Winner->"+str, Toast.LENGTH_SHORT).show()
+            winnerAnnounced(str.uppercase());
+        }
+        // for check vertical elements
+        else if (  GameboardStates.get(0).equals(GameboardStates.get(3))&& GameboardStates.get(3).equals(
+                GameboardStates.get(6))&& !GameboardStates.get(0).equals("2")){
+            Toast.makeText(applicationContext, "Winner->"+str, Toast.LENGTH_SHORT).show()
+            winnerAnnounced(str.uppercase());
+        }
 
+        else if (  GameboardStates.get(1).equals(GameboardStates.get(4))&& GameboardStates.get(4).equals(
+                GameboardStates.get(7))&& !GameboardStates.get(1).equals("2")){
+            Toast.makeText(applicationContext, "Winner->"+str, Toast.LENGTH_SHORT).show()
+            winnerAnnounced(str.uppercase());
+        }
+        else if (  GameboardStates.get(2).equals(GameboardStates.get(5))&& GameboardStates.get(5).equals(
+                GameboardStates.get(8))&& !GameboardStates.get(2).equals("2")){
+            Toast.makeText(applicationContext, "Winner->"+str, Toast.LENGTH_SHORT).show()
+            winnerAnnounced(str.uppercase());
+        }
+        // check diagonal elements
+        else if (  GameboardStates.get(0).equals(GameboardStates.get(4))&& GameboardStates.get(4).equals(
+                GameboardStates.get(8))&& !GameboardStates.get(0).equals("2")){
+            Toast.makeText(applicationContext, "Winner->"+str, Toast.LENGTH_SHORT).show()
+            winnerAnnounced(str.uppercase());
+        }
+        else if (  GameboardStates.get(2).equals(GameboardStates.get(4))&& GameboardStates.get(4).equals(
+                GameboardStates.get(6))&& !GameboardStates.get(2).equals("2")){
+            Toast.makeText(applicationContext, "Winner->"+str, Toast.LENGTH_SHORT).show()
+            winnerAnnounced(str.uppercase());
+        }
+
+
+
+
+
+    }
+    private fun winnerAnnounced(winner:String){
+            if(winner.equals("X")){
+                playersCount_X++
+                ResetPlayborad()
+
+            }else{
+                playersCount_O++
+                ResetPlayborad()
+            }
+
+    }
+    private fun ResetPlayborad(){
+        bindingGameboard.playboard.btn0.text = ""
+        bindingGameboard.playboard.btn1.text = ""
+        bindingGameboard.playboard.btn2.text = ""
+        bindingGameboard.playboard.btn3.text = ""
+        bindingGameboard.playboard.btn4.text = ""
+        bindingGameboard.playboard.btn5.text = ""
+        bindingGameboard.playboard.btn6.text = ""
+        bindingGameboard.playboard.btn7.text = ""
+        bindingGameboard.playboard.btn8.text = ""
+
+        bindingGameboard.playboard.btn0.setBackgroundResource(R.drawable.playbtnbg)
+        bindingGameboard.playboard.btn1.setBackgroundResource(R.drawable.playbtnbg)
+        bindingGameboard.playboard.btn2.setBackgroundResource(R.drawable.playbtnbg)
+        bindingGameboard.playboard.btn3.setBackgroundResource(R.drawable.playbtnbg)
+        bindingGameboard.playboard.btn4.setBackgroundResource(R.drawable.playbtnbg)
+        bindingGameboard.playboard.btn5.setBackgroundResource(R.drawable.playbtnbg)
+        bindingGameboard.playboard.btn6.setBackgroundResource(R.drawable.playbtnbg)
+        bindingGameboard.playboard.btn7.setBackgroundResource(R.drawable.playbtnbg)
+        bindingGameboard.playboard.btn8.setBackgroundResource(R.drawable.playbtnbg)
+
+        for (i in 0..8){
+            GameboardStates[i] = "2"
+        }
 
     }
 }
