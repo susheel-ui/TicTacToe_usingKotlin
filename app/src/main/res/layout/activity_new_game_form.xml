@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".newGameForm"
+    android:background="@color/backgroundColor"
+    >
+
+    <include layout="@layout/app_bar"
+        android:id="@+id/appbarNewGameActivity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/heading1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter the Details of Players"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="@color/primaryColor"
+        android:fontFamily="@font/bebasneue_regular"
+        android:layout_margin="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbarNewGameActivity"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_50sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heading1"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_20sdp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player X "
+                android:fontFamily="@font/bebasneue_regular"
+                android:textColor="@color/primaryColor"
+                android:textSize="@dimen/_30sdp"
+                />
+            <EditText
+                android:id="@+id/playerX"
+                android:padding="@dimen/_10sdp"
+                android:textSize="@dimen/_20sdp"
+                android:fontFamily="@font/bebasneue_regular"
+                android:textColor="@color/primaryColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_bg"
+                android:layout_marginLeft="@dimen/_10sdp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_20sdp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player O "
+
+                android:fontFamily="@font/bebasneue_regular"
+                android:textColor="@color/primaryColor"
+                android:textSize="@dimen/_30sdp"
+                />
+            <EditText
+                android:id="@+id/playerO"
+                android:padding="@dimen/_10sdp"
+                android:textSize="@dimen/_20sdp"
+                android:fontFamily="@font/bebasneue_regular"
+                android:textColor="@color/primaryColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_bg"
+                android:layout_marginLeft="@dimen/_10sdp"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnPlayGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/primaryColor"
+            android:text="Play Game"
+            android:layout_marginTop="@dimen/_30sdp"
+            />
+
+    </LinearLayout>
+
+
+    <include
+        android:id="@+id/footer"
+        layout="@layout/copyright_footer"
+        style="@style/Footer"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

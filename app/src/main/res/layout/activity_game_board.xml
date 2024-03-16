@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameBoard">
+    <include layout="@layout/app_bar"
+        android:id="@+id/appbarGameBoard"
+        />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gridview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+<include layout="@layout/playboard_ui"
+    android:id="@+id/playboard"
+    />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <TextView
+        android:id="@+id/txtplayerx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Players X ="
+        android:textSize="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:rotation="180"
+        android:fontFamily="@font/bebasneue_regular"
+        app:layout_constraintEnd_toEndOf="@id/gridview"
+        app:layout_constraintBottom_toTopOf="@id/gridview"
+
+        />
+    <TextView
+        android:id="@+id/scorX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_30sdp"
+        android:text="0"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:fontFamily="@font/bebasneue_regular"
+        android:textColor="@color/secondyColor"
+        app:layout_constraintTop_toTopOf="@id/txtplayerx"
+        app:layout_constraintBottom_toBottomOf="@id/txtplayerx"
+        app:layout_constraintEnd_toStartOf="@+id/txtplayerx"
+        />
+    <TextView
+        android:id="@+id/txtplayerO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Players O ="
+        android:textSize="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:fontFamily="@font/bebasneue_regular"
+        app:layout_constraintStart_toStartOf="@id/gridview"
+        app:layout_constraintTop_toBottomOf="@id/gridview"
+        />
+    <TextView
+        android:id="@+id/scorY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_30sdp"
+        android:text="0"
+
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:fontFamily="@font/bebasneue_regular"
+        android:textColor="@color/primaryColor"
+        app:layout_constraintStart_toEndOf="@id/txtplayerO"
+        app:layout_constraintTop_toTopOf="@id/txtplayerO"
+        app:layout_constraintBottom_toBottomOf="@id/txtplayerO"
+
+         />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

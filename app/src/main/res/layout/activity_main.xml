@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/backgroundColor"
+    >
+
+    <include layout="@layout/app_bar"
+    android:id="@+id/appbarMainActivity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+    />
+
+    <Button
+        android:id="@+id/btnNewGame"
+        android:text="New Game"
+        style="@style/button_style"
+        android:soundEffectsEnabled="true"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:background="@drawable/buttonbg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbarMainActivity"
+        />
+    <Button
+        android:id="@+id/btnSaveGame"
+        style="@style/button_style"
+        android:text="Save Game"
+        android:soundEffectsEnabled="true"
+        android:background="@drawable/buttonbg"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="@id/btnNewGame"
+        app:layout_constraintEnd_toEndOf="@id/btnNewGame"
+        app:layout_constraintTop_toBottomOf="@id/btnNewGame"
+        />
+
+    <include
+        android:id="@+id/footer"
+        layout="@layout/copyright_footer"
+        style="@style/Footer"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,44 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TicTacToe" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.TicTacToe" parent="Base.Theme.TicTacToe" />
+    <style name="button_style" parent="Theme.TicTacToe">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="backgroundTint">@color/primaryColor</item>
+        <item name="android:fontFamily">@font/bebasneue_regular</item>
+        <item name="android:textColor">@color/secondyColor</item>
+        <item name="android:textSize">@dimen/_30sdp</item>
+        <item name="android:paddingEnd">@dimen/_20sdp</item>
+        <item name="android:paddingStart">@dimen/_20sdp</item>
+
+    </style>
+    <style name="Footer" parent="Theme.TicTacToe">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="layout_constraintStart_toStartOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+    </style>
+
+
+    <style name="playboardBtn" parent="Theme.TicTacToe">
+
+        <item name="android:layout_width">@dimen/_90sdp</item>
+        <item name="android:layout_height">@dimen/_90sdp</item>
+        <item name="cardCornerRadius">@dimen/_5sdp</item>
+        <item name="android:textSize">@dimen/_40sdp</item>
+        <item name="fontFamily">@font/slacksideone_regular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAlignment">center</item>
+
+    </style>
+
+
+</resources>
