@@ -48,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/_30sdp"
+        android:rotation="180"
         android:text="0"
         android:layout_marginRight="@dimen/_20sdp"
         android:fontFamily="@font/bebasneue_regular"

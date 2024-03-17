@@ -28,11 +28,13 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
         setContentView(bindingGameboard.root)
         
        try {
-           var playersDetailsString = intent.getStringExtra("playersDetails")
-           var playerDetails = JSONObject(playersDetailsString)
-           var playerX_name = playerDetails.get(playerx)
-           var playerO_name = playerDetails.get(playero)
+           val playersDetailsString = intent.getStringExtra("playersDetails")
+           val playerDetails = JSONObject(playersDetailsString)
+           val playerX_name = playerDetails.get(playerx)
+           val playerO_name = playerDetails.get(playero)
            Log.d(TAG, "onCreate: GameBoard $playersDetailsString $playerX_name $playerO_name")
+           bindingGameboard.txtplayerx.text = playerX_name.toString().plus("[X]")
+           bindingGameboard.txtplayerO.text = playerO_name.toString().plus("[O]")
 
        }catch (e:Exception){
            Log.e(TAG, "onCreate: in intentGetting ${e.message}")
@@ -138,8 +140,6 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
                     XorY = false
                 }
 
-
-
             }
         }
 
@@ -219,13 +219,13 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
 
             if(winner.equals("X")){
                 playersCount_X++
-
+                bindingGameboard.scorX.text = playersCount_X.toString()
                 ResetPlayborad()
 
 
             }else{
                 playersCount_O++
-
+                bindingGameboard.scorY.text = playersCount_O.toString()
                 ResetPlayborad()
             }
 
