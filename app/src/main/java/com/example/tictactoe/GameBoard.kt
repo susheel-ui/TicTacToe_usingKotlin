@@ -15,9 +15,11 @@ import org.json.JSONObject
 private val playerx = "playerX"
 private val playero = "playerO"
 private var XorY = true
+private var WinnerAnnounceOrNot = false
 private var GameboardStates = arrayOf("2","2","2","2","2","2","2","2","2")
 private var playersCount_X = 0
 private var playersCount_O = 0
+private var counter=0
 class GameBoard : AppCompatActivity(),View.OnClickListener {
     private lateinit var bindingGameboard:ActivityGameBoardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,19 +112,33 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
        }
     private fun GameBottomClick(position:Int, view: View){
         var btn:Button = findViewById(view.id);
+        if (counter == 0){                                                                          // if counter is 0 then it will set the reset WinnerAnnounceOrNot for false then it will goes to normal behaviour
+            WinnerAnnounceOrNot = false
+        }
         if(btn.text.isEmpty()){
             if(XorY==true){
                         btn.setBackgroundResource(R.drawable.bkg_o)
                         btn.text = "O"
                         addFilledPositions(position,"O")
-                        XorY= false
+                if (WinnerAnnounceOrNot == false){
+                    XorY= false
+                }else{
+                    XorY = true
+                }
+
 
             }else{
 
                         btn.setBackgroundResource(R.drawable.bkg_x)
                         btn.text = "X"
                 addFilledPositions(position,"X")
-                        XorY = true
+                if (WinnerAnnounceOrNot == false){
+                    XorY = true
+                }else{
+                    XorY = false
+                }
+
+
 
             }
         }
@@ -131,7 +147,12 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
     }
     private fun addFilledPositions(place:Int,str:String){
         GameboardStates[place] = str
-        checkGame(str)
+        counter++                                                                                   // counter for get the position of the game play
+
+        if(counter>=4){                                                                             // if counter is in 4th number then it check otherwise it will not execute this section of code because there is no chance to win if there is only 3 input
+            checkGame(str)
+        }
+
     }
     private fun checkGame(str:String){
         //for testing purpose
@@ -184,6 +205,8 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
                 GameboardStates.get(6))&& !GameboardStates.get(2).equals("2")){
             Toast.makeText(applicationContext, "Winner->"+str, Toast.LENGTH_SHORT).show()
             winnerAnnounced(str.uppercase());
+        }else if(counter == 9){
+            ResetPlayborad()
         }
 
 
@@ -192,12 +215,17 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
 
     }
     private fun winnerAnnounced(winner:String){
+        WinnerAnnounceOrNot = true
+
             if(winner.equals("X")){
                 playersCount_X++
+
                 ResetPlayborad()
+
 
             }else{
                 playersCount_O++
+
                 ResetPlayborad()
             }
 
@@ -226,6 +254,8 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
         for (i in 0..8){
             GameboardStates[i] = "2"
         }
+        counter=0;
+
 
     }
 }
