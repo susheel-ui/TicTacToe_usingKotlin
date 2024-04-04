@@ -6,8 +6,11 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
+import androidx.room.RoomDatabase
+import com.example.tictactoe.DB_files.Game_info
+import com.example.tictactoe.DB_files.SaveGameDatabase
 import com.example.tictactoe.databinding.ActivityGameBoardBinding
 import org.json.JSONObject
 
@@ -36,6 +39,9 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
            Log.d(TAG, "onCreate: GameBoard $playersDetailsString $playerX_name $playerO_name")
            bindingGameboard.txtplayerx.text = playerX_name.toString().plus("[X]")
            bindingGameboard.txtplayerO.text = playerO_name.toString().plus("[O]")
+
+           // inisited database
+                initiated_db(playerX_name.toString(),playerO_name.toString())
 
        }catch (e:Exception){
            Log.e(TAG, "onCreate: in intentGetting ${e.message}")
@@ -260,14 +266,22 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
 
     }
 
-    // onback click data saving implematation
-    val callBack :OnBackPressedCallback = object :OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            TODO("Not yet implemented")
-            Toast.makeText(applicationContext, "back presses", Toast.LENGTH_SHORT).show()
-        }
 
+    private fun initiated_db(nameX:String,nameO:String){
+        val gameInfo = Game_info(nameX,nameO,0,0,"GameNotYesStarted")
+        val db = getDatabase()
+        val dao = db.game_Dao()
+        dao.insertnewEntity(gameInfo)
 
     }
+    public fun getDatabase():SaveGameDatabase{
+        val db = Room.databaseBuilder(applicationContext,
+            SaveGameDatabase::class.java,
+            "SavedGames"
+        ).allowMainThreadQueries().build()
+        return db
+    }
+
+
     
 }
