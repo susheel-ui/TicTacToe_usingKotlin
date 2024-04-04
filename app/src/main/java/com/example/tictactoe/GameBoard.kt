@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tictactoe.databinding.ActivityGameBoardBinding
 import org.json.JSONObject
@@ -258,4 +259,15 @@ class GameBoard : AppCompatActivity(),View.OnClickListener {
 
 
     }
+
+    // onback click data saving implematation
+    val callBack :OnBackPressedCallback = object :OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            TODO("Not yet implemented")
+            Toast.makeText(applicationContext, "back presses", Toast.LENGTH_SHORT).show()
+        }
+
+
+    }
+    
 }
